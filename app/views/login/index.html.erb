@@ -1,35 +1,50 @@
   <div class="row">
-    <div class="col s12 m12 l6 xl6  offset-l3 offset-xl3">
+    <div class="col s12 m12 l4 xl4  offset-l4 offset-xl4">
       <div class="card-panel">
      
-    <form >
+    <form action="<%=url_for action:'index',controller:'main'%>" method="get">
 
      <div class="row">
      	<div class="col s12 m12 l12 xl12 center">
-     		  <img src="<%=image_path 'logo.png'%>">
+     		  <img src="<%=image_path 'logo.png'%>" style="height: 100px">
      	</div>
         <div class="input-field col s12">
-          <input id="email" type="email" class="validate">
-          <label for="email">Email</label>
+          <i class="material-icons prefix">account_circle</i>
+          <input id="email" type="email" class="validate" name="user">
+          <label for="email">Usuario</label>
+           <span class="helper-text" data-error="email incorecto!" data-success=""></span>
         </div>
         <div class="input-field col s12">
-          <input id="password" type="password" class="validate">
-          <label for="password">Password</label>
+          <i class="material-icons prefix">lock</i>
+          <input id="password" type="password" class="validate" minlength="6" name="password">
+          <label for="password">Contraseña</label>
+           <span class="helper-text" data-error="La contraseña debe tener como mínimo 6 caracteres!" data-success=""></span>
        
       </div>
          <div class="col s12 m12 l12 xl12">
      	<div class="switch">
     <label>
-      <input type="checkbox">
+      <input type="checkbox" checked>
       <span class="lever"></span>
      Recordar mis datos
     </label>
   </div>
     </div>
-     <div class="col s12 m12 l12 xl12">
-      <a class="waves-effect waves-light btn"><i class="material-icons left">send</i>Autenticar</a>
+     <div class="col s12 m12 l12 xl12 center">
+      <button type="submit" class="waves-effect waves-light btn"><i class="material-icons left">send</i>Autenticar</button>
      </div>
 
+     <div class="col s12 m12 l12 xl12">
+       <a class="btn-floating "><i class="material-icons">add</i></a>
+       <a class="btn-floating "><i class="material-icons">add</i></a>
+       <a class="btn-floating "><i class="material-icons">add</i></a>
+     </div>
+      <div class="col s6 m6 l6 xl6">
+      <%=link_to 'Olvidaste tus datos?'%>
+      </div>
+        <div class="col s6 m6 l6 xl6">
+      <%=link_to 'Crear una cuenta',controller:"sign_up",action:"index"%>
+      </div>
      </div>
     </form>
    
