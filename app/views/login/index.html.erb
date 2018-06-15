@@ -1,13 +1,17 @@
-  <div class="row">
+<div class="parallax-container">
+      <div class="parallax">
+        <img src="<%=image_path 'home-map.png'%>">
+      </div>
+      <div class="row">
     <div class="col s12 m12 l4 xl4  offset-l4 offset-xl4">
       <div class="card-panel">
      
     <form action="<%=url_for action:'index',controller:'main'%>" method="get">
 
      <div class="row">
-     	<div class="col s12 m12 l12 xl12 center">
-     		  <img src="<%=image_path 'logo.png'%>" style="height: 100px">
-     	</div>
+      <div class="col s12 m12 l12 xl12 center">
+          <img src="<%=image_path 'logo.png'%>" style="height: 100px">
+      </div>
         <div class="input-field col s12">
           <i class="material-icons prefix">account_circle</i>
           <input id="email" type="email" class="validate" name="user">
@@ -22,7 +26,7 @@
        
       </div>
          <div class="col s12 m12 l12 xl12">
-     	<div class="switch">
+      <div class="switch">
     <label>
       <input type="checkbox" checked>
       <span class="lever"></span>
@@ -34,11 +38,7 @@
       <button type="submit" class="waves-effect waves-light btn"><i class="material-icons left">send</i>Autenticar</button>
      </div>
 
-     <div class="col s12 m12 l12 xl12">
-       <a class="btn-floating "><i class="material-icons">add</i></a>
-       <a class="btn-floating "><i class="material-icons">add</i></a>
-       <a class="btn-floating "><i class="material-icons">add</i></a>
-     </div>
+   
       <div class="col s6 m6 l6 xl6">
       <%=link_to 'Olvidaste tus datos?'%>
       </div>
@@ -55,3 +55,7 @@
             
 
 
+
+    </div>
+
+  
