@@ -1,8 +1,15 @@
-<div class="parallax-container">
-      <div class="parallax">
-        <img src="<%=image_path 'home-map.png'%>">
-      </div>
-      <div class="row">
+<style>
+body{
+  background: #a7cbf8;
+}
+  body{
+  background-image: url(<%=image_path 'home-map.png'%>);
+
+       background-size: contain;
+    background-repeat: no-repeat;
+}
+</style>
+ <div class="row" style="    margin-top: 10%;">
     <div class="col s12 m12 l4 xl4  offset-l4 offset-xl4">
       <div class="card-panel">
      
@@ -34,28 +41,19 @@
     </label>
   </div>
     </div>
-     <div class="col s12 m12 l12 xl12 center">
+     <div class="col s12 m12 l12 xl12 center" style="margin-top: 5px">
       <button type="submit" class="waves-effect waves-light btn"><i class="material-icons left">send</i>Autenticar</button>
      </div>
 
    
-      <div class="col s6 m6 l6 xl6">
+      <div class="col s6 m6 l6 xl6" style="margin-top:20px">
       <%=link_to 'Olvidaste tus datos?'%>
       </div>
-        <div class="col s6 m6 l6 xl6">
-      <%=link_to 'Crear una cuenta',controller:"sign_up",action:"index"%>
+        <div class="col s6 m6 l6 xl6 right" style="margin-top:20px">
+      <%=link_to 'Crear una cuenta',controller:"home",action:"index","sign-up":"1"%>
       </div>
      </div>
     </form>
-   
-  
       </div> 
     </div>
-  </div>
-            
-
-
-
     </div>
-
-  

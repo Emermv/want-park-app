@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  	<meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+   <meta name="theme-color" content="#546e7a">
+   <meta name="mobile-web-app-capable" content="yes">
+   <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <title>WantPark</title>
+   <%= favicon_link_tag 'logo.png' %>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> 
+  </head>
+
+  <body>
+      <ul id='dropdown_more_options' class='dropdown-content'>
+    <li><a href="#!">
+      <i class="material-icons">help</i> Ayuda
+    </a>
+  </li>
+
+    <li class="divider" tabindex="-1"></li>
+    <li>
+      <a href="<%=url_for action:'index',controller:'home'%>"><i class="material-icons">exit_to_app</i> Salir</a>
+    </li>
+  </ul>
+
+ <nav class="blue-grey darken-3"> 
+  <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+  
+
+  <ul class="right" style="margin-right: 10px">
+     <li>     <input search-input type="text" placeholder="buscar..." class="browser-default" /></li>
+      <li><a class="dropdown-trigger pointer"  data-target="dropdown_more_options">
+        <i class="material-icons right">more_vert</i></a></li>
+    </ul>
+ </nav>
+
+  <ul id="slide-out" class="sidenav sidenav-fixed">
+    <li><div class="user-view">
+      <div class="background">
+        <img src="<%=image_path 'home-map.png'%>">
+      </div>
+      <a href="#user"><img class="circle" src="<%=image_path 'logo.png'%>"></a>
+      <a href="#name"><span class="white-text name">John Doe</span></a>
+      <a href="#email"><span class="white-text email">jdandturk@gmail.com</span></a>
+    </div></li>
+    <li><a href="index" class="waves-effect"><i class="material-icons">home</i>Inicio</a></li>
+    <li><a href="parking" class="waves-effect"><i class="material-icons">directions_car</i>Estacionar</a></li>
+    <li><a href="history" class="waves-effect"><i class="material-icons">history</i>Historial</a></li>
+
+    <li><div class="divider"></div></li>
+    <li><a class="subheader">Avanzado</a></li>
+
+    <li><a href="#" class="waves-effect"><i class="material-icons">settings</i>Configuración</a></li>
+  </ul>
+<main>
+    <%= yield %>
+
+</main>
+  
+  </body>
+</html>
