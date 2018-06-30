@@ -1,0 +1,28 @@
+  <h4>Registrate</h4>
+        <hr>
+<%= form_for @new_user do |f| %>
+  <% if @new_user.errors.any? %>
+  <div id="errorExplanation">
+    <h2><%= pluralize(@new_user.errors.count, "error") %> prohibited
+      this new_user from being saved:</h2>
+    <ul>
+    <% @new_user.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+  <% end %>
+
+ 
+         <div class="row">
+           <div class="input-field col s12 m12 l6 xl6">
+          <i class="material-icons prefix">account_circle</i>
+          <!--input id="name" type="text" class="validate"-->
+          <%=f.text_field :name %>
+          <%=f.label :Nombres%>
+        </div>
+
+         </div>
+  
+<% end %>
+

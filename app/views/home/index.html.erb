@@ -79,60 +79,7 @@
 </div>
  <div id="register-modal" class="modal">
     <div class="modal-content">
-      <h4>Registrate</h4>
-        <hr>
-      
-          <form>
-             <div class="row">
-        <div class="input-field col s12 m12 l6 xl6">
-          <i class="material-icons prefix">account_circle</i>
-          <input id="name" type="text" class="validate">
-          <label for="name">Nombres</label>
-        </div>
-          <div class="input-field col s12 m12 l6 xl6">
-          <i class="material-icons prefix">account_circle</i>
-          <input id="lastname" type="text" class="validate">
-          <label for="lastname">Apellidos</label>
-        </div>
-        <div class="input-field col s12 m12 l6 xl6">
-          <i class="material-icons prefix">email</i>
-          <input id="user" type="email" class="validate">
-          <label for="user">Usuario</label>
-        </div>
-         <div class="input-field col s12 m12 l6 xl6">
-          <i class="material-icons prefix">lock</i>
-          <input id="password" type="password" class="validate">
-          <label for="password">Contraseña</label>
-        </div>
-
-        <div class=" input-field col s12 m12 l6 xl6 center">
-         <div class="switch">
-            <label>
-              Femenino
-              <input type="checkbox" name="user_type" checked>
-              <span class="lever"></span>
-              Masculino
-            </label>
-            
-          </div>
-        </div>
-
-        <div class=" input-field col s12 m12 l6 xl6 center">
-          <div class="switch">
-            <label>
-              Proveedor
-              <input type="checkbox" name="user_type" checked>
-              <span class="lever"></span>
-              Cliente
-            </label>
-            
-          </div>
-        </div>
-        
-      </div>
-
-          </form>
-       
+        <%=render 'new-user-form'%>
     </div>
     <div class="modal-footer">
       <a  class="pointer  waves-effect waves-green btn-flat">

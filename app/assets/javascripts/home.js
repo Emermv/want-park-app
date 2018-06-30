@@ -13,3 +13,4 @@ function builtModal(open=false){
     	instance[0].open();
     }
 }
+

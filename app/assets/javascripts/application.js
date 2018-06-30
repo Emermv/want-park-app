@@ -15,3 +15,23 @@
 //= require turbolinks
 //= require_tree .
 //= require materialize
+
+function http (uri, data, type = "POST") {
+                return new Promise((resolve, reject) => {
+                    var xhr = new XMLHttpRequest();
+                    xhr.open(type, uri);
+                    xhr.onload = () => {
+                        if (xhr.status === 200) {
+                            try{
+                                resolve(xhr.responseText);
+                            }catch(err){
+                                console.log("JSON format error!",err);
+                            }
+                        } else {
+                            reject(xhr);
+                            console.log(xhr);
+                        }
+                    };
+                    xhr.send(data);
+                });
+            }

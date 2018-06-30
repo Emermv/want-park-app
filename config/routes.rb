@@ -6,5 +6,6 @@ get '/main/parking'
 get "/sign-up/index"
 get '/login/index'
 post '/login/autenticate'
+get "home/hello"
 root 'home#index'
 end
