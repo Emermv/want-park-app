@@ -13,25 +13,11 @@
 
 //= require rails-ujs
 //= require turbolinks
-//= require_tree .
+//= require_tree ./base
 //= require materialize
-
-function http (uri, data, type = "POST") {
-                return new Promise((resolve, reject) => {
-                    var xhr = new XMLHttpRequest();
-                    xhr.open(type, uri);
-                    xhr.onload = () => {
-                        if (xhr.status === 200) {
-                            try{
-                                resolve(xhr.responseText);
-                            }catch(err){
-                                console.log("JSON format error!",err);
-                            }
-                        } else {
-                            reject(xhr);
-                            console.log(xhr);
-                        }
-                    };
-                    xhr.send(data);
-                });
-            }
+//= require_tree ./login
+function form_submit(submit){
+    let el=document.getElementById(submit);
+    console.log(el);
+    el.click();
+}

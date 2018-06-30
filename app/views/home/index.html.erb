@@ -79,10 +79,10 @@
 </div>
  <div id="register-modal" class="modal">
     <div class="modal-content">
-        <%=render 'new-user-form'%>
+        <%=render 'users/form',user:@user%>
     </div>
     <div class="modal-footer">
-      <a  class="pointer  waves-effect waves-green btn-flat">
+      <a  class="pointer  waves-effect waves-green btn-flat" onclick="form_submit('submit_user_form')">
         Guardar
       </a>
       <a  class="pointer modal-close waves-effect waves-green btn-flat">

@@ -1,0 +1,58 @@
+<h4>Registrate</h4>
+<hr>
+<%= form_with(model: user,format: :json,local:false,html:{id:'new-user-form'}) do |f| %>
+
+            <div class="row">
+
+                <div class=" col s12 m12 l12 xl12 hide" >
+                    <div id="user_error_explanation" class="alert alert-danger"> </div>
+                </div>
+                <div class="input-field col s12 m12 l6 xl6">
+                    <i class="material-icons prefix">account_circle</i>
+                    <%= f.text_field :nombre, id: :user_nombre ,class: :validate%>
+                    <%= f.label :nombre %>
+                </div>
+                <div class="input-field col s12 m12 l6 xl6">
+                    <i class="material-icons prefix">account_circle</i>
+                    <%= f.label :apellidos %>
+                    <%= f.text_field :apellidos, id: :user_apellidos,class: :validate %>
+                </div>
+                <div class="input-field col s12 m12 l6 xl6">
+          <i class="material-icons prefix">email</i>
+        
+          <%= f.text_field :usuario, id: :user_usuario ,type: :email,class: :validate %>
+             <%= f.label :usuario %>
+        </div>
+         <div class="input-field col s12 m12 l6 xl6">
+          <i class="material-icons prefix">lock</i>
+          <%= f.text_field :contrasenia, id: :user_contrasenia ,type: :password,class: :validate%>
+           <%= f.label :Contraseña %>
+        </div>
+         <div class=" input-field col s12 m12 l6 xl6 center">
+         <div class="switch">
+            <label>
+              Femenino
+             <%= f.text_field :genero, id: :user_genero,checked: :true ,type: :checkbox, value: :M,onchange: :"change_type(this,'M','F') "%>
+              <span class="lever"></span>
+              Masculino
+            </label>
+            
+          </div>
+        </div>
+           <div class=" input-field col s12 m12 l6 xl6 center">
+          <div class="switch">
+            <label>
+              Proveedor
+             <%= f.text_field :tipo_usuario, id: :user_tipo_usuario,checked: :true ,type: :checkbox,value: :'1',onchange: :"change_type(this,1,2) "%>
+              <span class="lever"></span>
+              Cliente
+            </label>
+            
+          </div>
+        </div>
+        <div class="hide">
+          <%=f.submit :send,id: :submit_user_form%>
+        </div>
+            </div>
+           
+            <% end %>

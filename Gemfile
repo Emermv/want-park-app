@@ -50,3 +50,4 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'materialize-sass', '~> 1.0.0.rc1'
+gem 'jquery-turbolinks', '~> 2.1'

@@ -1,6 +1,6 @@
   <h4>Registrate</h4>
         <hr>
-<%= form_for @new_user do |f| %>
+<%=form_with(model: new_user, local: true)  do |f| %>
   <% if @new_user.errors.any? %>
   <div id="errorExplanation">
     <h2><%= pluralize(@new_user.errors.count, "error") %> prohibited
@@ -18,7 +18,7 @@
            <div class="input-field col s12 m12 l6 xl6">
           <i class="material-icons prefix">account_circle</i>
           <!--input id="name" type="text" class="validate"-->
-          <%=f.text_field :name %>
+          <%=f.text_field :nombre %>
           <%=f.label :Nombres%>
         </div>
 

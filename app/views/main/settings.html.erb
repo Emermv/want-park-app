@@ -1,0 +1,38 @@
+
+ <div class="row blue-grey darken-3">
+    <div class="col s12">
+      <ul class="tabs tabs-fixed-width transparent">
+        <li class="tab col s3"><a href="#test1" class="active white-text">General</a></li>
+        <li class="tab col s3"><a class=" white-text" href="#test2">Avanzado</a></li>
+  
+      </ul>
+    </div>
+   
+  </div>
+   <div id="test1" class="col s12">
+ 
+
+<div class="container">
+	<div class="card-panel">
+	
+	<div class="row">
+		<div class="col s12 m12 l12 xl12">
+			<%=render '/users/edit_form',user:@user%>
+		</div>
+		<div class="col s12 m12 l12 xl12 center">
+			 <a class="btn-floating btn-large waves-effect waves-light blue" 
+			 onclick="form_submit('submit_user_form')">
+			 	<i class="material-icons">done</i>
+			 </a>
+		</div>
+	</div>
+</div>
+</div>
+   </div>
+    <div id="test2" class="col s12">
+    	 <%=session[:user]%>
+    </div>
+  <script >
+   	$('.tabs').tabs();
+  	 M.updateTextFields();
+  </script>
