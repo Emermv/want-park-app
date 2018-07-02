@@ -10,57 +10,66 @@
       </ul>
     </div>
   <% end %>
+ <div class="row">
+  
+      <div class="input-field col s12 m12 l6 xl6">
+       <i class="material-icons prefix">merge_type</i>
+      
+        <%= form.number_field :tipo, id: :estacionamiento_tipo %>
+          <%= form.label :tipo %>
+    </div>
 
-  <div class="field">
-    <%= form.label :descripcion %>
-    <%= form.text_area :descripcion, id: :estacionamiento_descripcion %>
-  </div>
-
-  <div class="field">
-    <%= form.label :tipo %>
-    <%= form.number_field :tipo, id: :estacionamiento_tipo %>
-  </div>
-
-  <div class="field">
-    <%= form.label :id_proveedor %>
+      <div class="input-field col s12 m12 l6 xl6">
+       <i class="material-icons prefix">merge_type</i>
+      
     <%= form.number_field :id_proveedor, id: :estacionamiento_id_proveedor %>
-  </div>
+    <%= form.label :id_proveedor %>
+    </div>
 
-  <div class="field">
-    <%= form.label :direccion %>
+      <div class="input-field col s12 m12 l6 xl6">
+       <i class="material-icons prefix">merge_type</i>
+      <%= form.label :direccion %>
     <%= form.text_field :direccion, id: :estacionamiento_direccion %>
-  </div>
+    </div>
 
-  <div class="field">
-    <%= form.label :latitud %>
+     <div class="input-field col s12 m12 l6 xl6">
+       <i class="material-icons prefix">merge_type</i>
+         <%= form.label :latitud %>
     <%= form.text_field :latitud, id: :estacionamiento_latitud %>
-  </div>
+    </div>
 
-  <div class="field">
-    <%= form.label :longitud %>
+
+
+    <div class="input-field col s12 m12 l6 xl6">
+       <i class="material-icons prefix">merge_type</i>
+            <%= form.label :longitud %>
     <%= form.text_field :longitud, id: :estacionamiento_longitud %>
-  </div>
+    </div>
 
-  <div class="field">
+       <div class="input-field col s12 m12 l6 xl6">
+       <i class="material-icons prefix">merge_type</i>
     <%= form.label :altitud %>
     <%= form.text_field :altitud, id: :estacionamiento_altitud %>
-  </div>
+    </div>
 
-  <div class="field">
-    <%= form.label :estado %>
+          <div class="input-field col s12 m12 l6 xl6">
+       <i class="material-icons prefix">merge_type</i>
+   <%= form.label :estado %>
     <%= form.check_box :estado, id: :estacionamiento_estado %>
-  </div>
+    </div>
 
-  <div class="field">
-    <%= form.label :precio %>
+       <div class="input-field col s12 m12 l6 xl6">
+       <i class="material-icons prefix">merge_type</i>
+      <%= form.label :precio %>
     <%= form.text_field :precio, id: :estacionamiento_precio %>
-  </div>
+    </div>
 
-  <div class="field">
-    <%= form.label :moneda %>
+         <div class="input-field col s12 m12 l6 xl6">
+       <i class="material-icons prefix">merge_type</i>
+      <%= form.label :moneda %>
     <%= form.text_field :moneda, id: :estacionamiento_moneda %>
-  </div>
-
+    </div>
+ </div>
   <div class="hide">
     <%= form.submit'send',id: :'submit-parking-form' %>
   </div>

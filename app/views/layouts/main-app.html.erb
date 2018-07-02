@@ -56,16 +56,21 @@
         <i class="material-icons">home</i>Inicio
       </a>
       </li>
-    <li>
+  
+    <%if session[:user]['tipo_usuario']!=1%>
+      <li>
       <a href="parking" class="waves-effect">
         <i class="material-icons">directions_car</i>Estacionar
       </a>
     </li>
+   <% else %>
      <li>
       <a href="parking_manager" class="waves-effect">
         <i class="material-icons">directions_car</i>Estacionamientos
       </a>
     </li>
+    <% end %>
+
     <li>
       <a href="history" class="waves-effect">
         <i class="material-icons">history</i>Historial
