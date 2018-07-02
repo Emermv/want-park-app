@@ -10,7 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180630025947) do
+ActiveRecord::Schema.define(version: 20180701003806) do
+
+  create_table "estacionamientos", force: :cascade do |t|
+    t.text "descripcion"
+    t.integer "tipo"
+    t.integer "id_proveedor"
+    t.string "direccion"
+    t.string "latitud"
+    t.string "longitud"
+    t.string "altitud"
+    t.boolean "estado"
+    t.decimal "precio"
+    t.string "moneda"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "tests", force: :cascade do |t|
     t.string "title"

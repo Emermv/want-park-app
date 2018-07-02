@@ -1,0 +1,21 @@
+<%=render '/estacionamientos/list_all',estacionamientos: @estacionamientos%>
+  <div class="fixed-action-btn">
+  <a class="btn-floating btn-large blue" onclick="new_parking()">
+    <i class="large material-icons">add</i>
+  </a>
+</div>
+
+ <div id="new-parking-modal" class="modal">
+    <div class="modal-content">
+    	<h5>Nuevo estacionamiento</h5><hr>
+        <%=render '/estacionamientos/form',estacionamiento:@estacionamiento%>
+    </div>
+    <div class="modal-footer">
+      <a  class="pointer  waves-effect waves-green btn-flat" onclick="form_submit('submit-parking-forms')">
+        Guardar
+      </a>
+      <a  class="pointer modal-close waves-effect waves-green btn-flat">
+        Cancelar
+      </a>
+    </div>
+  </div>

@@ -4,8 +4,11 @@
        if(e.detail && e.detail[1]=="OK"){
             swal({
   title: "Actualizado correctamente!",
+  text:"Para que los cambios se apliquen correctamente es necesario autenticarse otra vez!",
   icon: "success",
   button: "ok",
+}).then((restart)=>{
+	location.pathname="/login/index";
 });
        }else{
           swal({
@@ -30,3 +33,9 @@
 });
 
  });
+
+  function new_parking(){
+  	var elems = document.querySelectorAll('#new-parking-modal');
+    var instance = M.Modal.init(elems, {});
+   instance[0].open();
+  }

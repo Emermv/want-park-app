@@ -9,10 +9,11 @@
     </div>
    
   </div>
-   <div id="test1" class="col s12">
+  <div style="overflow-y: auto;" scrollable>
+   <div id="test1">
  
 
-<div class="container">
+<div class="container" >
 	<div class="card-panel">
 	
 	<div class="row">
@@ -29,9 +30,10 @@
 </div>
 </div>
    </div>
-    <div id="test2" class="col s12">
+    <div id="test2">
     	 <%=session[:user]%>
     </div>
+</div>
   <script >
    	$('.tabs').tabs();
   	 M.updateTextFields();

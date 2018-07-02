@@ -1,11 +1,8 @@
  document.addEventListener('DOMContentLoaded', function() {
-    var elems = document.querySelectorAll('.sidenav');
-    var instances = M.Sidenav.init(elems,{});
-   var elems = document.querySelectorAll('.dropdown-trigger');
-    var instances = M.Dropdown.init(elems, {hover:true,constrainWidth:false,coverTrigger:false});
+  
     getLocation();
-    
 
+     //watch(document.querySelectorAll("[scrollable]"));
   });
 function initMap() {
         window.map = new google.maps.Map(document.getElementById('map'), {
@@ -32,3 +29,28 @@ var mapOptions = {
 }
 var map = new google.maps.Map(document.getElementById("map"), mapOptions);
 }
+
+function watch(els){
+  console.log(els);
+  window.is_desktop=window.innnerWidth>992;
+  let  desktop_ignore=120;
+  let  mobile_ignore=100;
+  let handle=(ignore)=>{
+for(let el of els){
+        el.style.height=(window.innerHeight-ignore)+'px';
+      }
+  };
+  handle(is_desktop?desktop_ignore:mobile_ignore);
+window.addEventListener('resize',()=>{
+  if(window.innnerWidth<=992){
+     if(!is_desktop)return;
+     is_desktop=false;
+     handle(mobile_ignore);
+  }else{
+    if(is_desktop)return;
+    is_desktop=true;
+      handle(desktop_ignore);
+  }
+});
+}
+

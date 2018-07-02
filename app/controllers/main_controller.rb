@@ -10,4 +10,9 @@ class MainController < ApplicationController
 	def settings
 		@user=User.find(session[:user]['id'])
 	end
+	def parking_manager
+		@estacionamientos = Estacionamiento.all
+		@estacionamiento=Estacionamiento.new
+	end
+
 end

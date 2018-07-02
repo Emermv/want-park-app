@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Descripcion:</strong>
+  <%= @estacionamiento.descripcion %>
+</p>
+
+<p>
+  <strong>Tipo:</strong>
+  <%= @estacionamiento.tipo %>
+</p>
+
+<p>
+  <strong>Id proveedor:</strong>
+  <%= @estacionamiento.id_proveedor %>
+</p>
+
+<p>
+  <strong>Direccion:</strong>
+  <%= @estacionamiento.direccion %>
+</p>
+
+<p>
+  <strong>Latitud:</strong>
+  <%= @estacionamiento.latitud %>
+</p>
+
+<p>
+  <strong>Longitud:</strong>
+  <%= @estacionamiento.longitud %>
+</p>
+
+<p>
+  <strong>Altitud:</strong>
+  <%= @estacionamiento.altitud %>
+</p>
+
+<p>
+  <strong>Estado:</strong>
+  <%= @estacionamiento.estado %>
+</p>
+
+<p>
+  <strong>Precio:</strong>
+  <%= @estacionamiento.precio %>
+</p>
+
+<p>
+  <strong>Moneda:</strong>
+  <%= @estacionamiento.moneda %>
+</p>
+
+<%= link_to 'Edit', edit_estacionamiento_path(@estacionamiento) %> |
+<%= link_to 'Back', estacionamientos_path %>

@@ -1,0 +1,12 @@
+ <ul class="collection">
+  <% @estacionamientos.each do |e| %>
+    <li class="collection-item avatar">
+      <img src="<%=image_path 'logo.png'%>" alt="" class="circle">
+      <span class="title"><%=e.descripcion%></span>
+      <p><%=e.direccion%><br>
+         <%=e.moneda%>  <%=e.precio%> 
+      </p>
+      <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+    </li>
+    <% end %>
+  </ul>
