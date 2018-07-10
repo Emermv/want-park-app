@@ -10,21 +10,27 @@ document.addEventListener('DOMContentLoaded', function() {
        console.log(data);
        console.log(e);
        localStorage.setItem("new_user",JSON.stringify(e.detail[0]));
-       window.location.pathname='/login/index';
+      // window.location.pathname='/login/index';
 
     });
     $(document).on("ajax:error","form#new-user-form",(e,data)=>{
        console.log(data);
        console.log(e);
-       let errors=new Array();
+       var output ="";
+       if(typeof e.detail[0] =="object"){
+         let errors=new Array();
        for(let key in e.detail[0]){
         errors=errors.concat(e.detail[0][key]);
         $("#user_"+key).addClass("invalid");
        }
       
-var output = Mustache.render(`<ul>{{#errors}}<li>{{.}}</li>{{/errors}}</u>`, {
+output = Mustache.render(`<ul>{{#errors}}<li>{{.}}</li>{{/errors}}</u>`, {
     errors:errors
 });
+       }else{
+        output=`<strong>`+e.detail[1]+`</strong>`;
+       }
+      
 user_error_explanation.html(output);
 user_error_explanation.parent().removeClass("hide");
     });

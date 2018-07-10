@@ -14,12 +14,12 @@
     <div class="input-field col s12 m12 l6 xl6">
        <i class="material-icons prefix">insert_comment</i>
         <%= form.label :descripcion %>
-        <%= form.text_area :descripcion, id: :estacionamiento_descripcion,class: :'materialize-textarea' %>
+        <%= form.text_field :descripcion, id: :estacionamiento_descripcion,class: :'materialize-textarea' %>
     </div>
       <div class="input-field col s12 m12 l6 xl6">
        <i class="material-icons prefix">merge_type</i>
       
-        <%= form.number_field :tipo, id: :estacionamiento_tipo %>
+        <%= form.select :tipo,[["Privado","1"], [ "Público","2"]], id: :estacionamiento_tipo %>
           <%= form.label :tipo %>
     </div>
 
@@ -78,3 +78,6 @@
     <%= form.submit'send',id: :'submit-parking-form' %>
   </div>
 <% end %>
+<script>
+   $('select').formSelect();
+</script>
