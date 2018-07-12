@@ -24,8 +24,9 @@ class EstacionamientosController < ApplicationController
   # POST /estacionamientos
   # POST /estacionamientos.json
   def create
+    params[:estacionamiento][:id_proveedor]=session['user']['id']
     @estacionamiento = Estacionamiento.new(estacionamiento_params)
-
+  
     respond_to do |format|
       if @estacionamiento.save
         format.html { redirect_to @estacionamiento, notice: 'Estacionamiento was successfully created.' }

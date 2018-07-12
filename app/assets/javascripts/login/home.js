@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
        console.log(data);
        console.log(e);
        localStorage.setItem("new_user",JSON.stringify(e.detail[0]));
-      // window.location.pathname='/login/index';
+       window.location.pathname='/login/index';
 
     });
     $(document).on("ajax:error","form#new-user-form",(e,data)=>{

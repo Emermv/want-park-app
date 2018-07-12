@@ -1,16 +1,11 @@
-<%= form_with(model: estacionamiento, local: true) do |form| %>
-  <% if estacionamiento.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(estacionamiento.errors.count, "error") %> prohibited this estacionamiento from being saved:</h2>
+<%= form_with(model: estacionamiento, format: :json,local: false,html:{id:"new-estacionamiento-form"}) do |form| %>
 
-      <ul>
-      <% estacionamiento.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+   
+
  <div class="row">
+   <div class="col s12 m12 l12 xl12 alert alert-danger hide" id="estacionamiento-error_explanation">
+      
+    </div>
     <div class="input-field col s12 m12 l6 xl6">
        <i class="material-icons prefix">insert_comment</i>
         <%= form.label :descripcion %>
@@ -21,13 +16,6 @@
       
         <%= form.select :tipo,[["Privado","1"], [ "Público","2"]], id: :estacionamiento_tipo %>
           <%= form.label :tipo %>
-    </div>
-
-      <div class="input-field col s12 m12 l6 xl6">
-       <i class="material-icons prefix">merge_type</i>
-      
-    <%= form.number_field :id_proveedor, id: :estacionamiento_id_proveedor %>
-    <%= form.label :id_proveedor %>
     </div>
 
       <div class="input-field col s12 m12 l6 xl6">
@@ -51,21 +39,29 @@
     </div>
 
        <div class="input-field col s12 m12 l6 xl6">
-       <i class="material-icons prefix">merge_type</i>
+      
     <%= form.label :altitud %>
     <%= form.text_field :altitud, id: :estacionamiento_altitud %>
     </div>
 
           <div class="input-field col s12 m12 l6 xl6">
        <i class="material-icons prefix">merge_type</i>
-   <%= form.label :estado %>
-    <%= form.check_box :estado, id: :estacionamiento_estado %>
+       <div class="switch">
+    <label>
+      Inactivo
+     <%= form.check_box :estado, id: :estacionamiento_estado,checked: true%>
+      <span class="lever"></span>
+      Activo
+    </label>
+  </div>
+
+    
     </div>
 
        <div class="input-field col s12 m12 l6 xl6">
        <i class="material-icons prefix">merge_type</i>
       <%= form.label :precio %>
-    <%= form.text_field :precio, id: :estacionamiento_precio %>
+    <%= form.text_field :precio, id: :estacionamiento_precio,onkeyup: "number_only(event)" %>
     </div>
 
          <div class="input-field col s12 m12 l6 xl6">
