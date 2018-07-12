@@ -3,6 +3,7 @@
 //= require turbolinks
 //= require_tree ./base
 //= require materialize
+
 //= require_tree ./main
 
 function form_submit(submit){

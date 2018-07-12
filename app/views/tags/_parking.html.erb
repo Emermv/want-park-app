@@ -1,0 +1,55 @@
+<parking>
+  <ul class="collection">
+
+     <li class="collection-item avatar" each="{p in parkings}">
+       <img src="<%=image_path 'logo.png'%>" alt="" class="circle">
+       <span class="title">{p.descripcion}</span>
+       <p>{p.direccion}<br>
+          {p.moneda} {p.precio}
+       </p>
+       <a href="#" class="secondary-content" onclick="{edit}"><i class="material-icons">edit</i></a>
+     </li>
+
+   </ul>
+   this.parkings= opts.parkings || new Array();
+   this.authenticity_token='p8d7U0LWmFKZas1+u4EEkSX954cx48xUme9WL81y1kROdM14LCB21F4FFCFRwFDm+D6yaBfnPyoh7g4PTN8GmA==';
+  this.on("mount", function () {
+     console.log("mounted",this.opts);
+  });
+  push(parking){
+    this.parkings.push(parking);
+    this.update();
+  }
+  edit(e){
+    e.preventDefault();
+    let row=e.item.p;/*
+    for(let key in row){
+      $("#estacionamiento_"+key).val(row[key]);
+    }
+    new_parking();
+    M.updateTextFields();*/
+    console.log(e);
+    let args={
+      utf8:"✓",
+    authenticity_token:this.authenticity_token,
+    };
+    for(let key in row){
+      args['estacionamiento['+key+']']=row[key];
+    }
+    console.log(args);
+    $.ajax({
+      url:" /estacionamientos/"+row.id+".json",
+        method:"PUT",
+        dataType:'application/x-www-form-urlencoded',
+        type:'json',
+      data:args,
+    success:(r)=>{
+      console.log(r);
+    },
+    error:(r)=>{
+      console.log(r);
+    }
+    })
+  }
+
+</parking>

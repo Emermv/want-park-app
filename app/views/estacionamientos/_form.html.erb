@@ -1,79 +1,108 @@
+
 <%= form_with(model: estacionamiento, format: :json,local: false,html:{id:"new-estacionamiento-form"}) do |form| %>
+<div class=" alert alert-danger hide" id="estacionamiento-error_explanation">
 
-   
+ </div>
+<ul class="stepper linear">
+   <li class="step active">
+      <div class="step-title waves-effect">Detalles</div>
+      <div class="step-content">
+         <div class="row">
+           <div class="input-field col s12 m12 l6 xl6">
+              <i class="material-icons prefix">insert_comment</i>
+               <%= form.label :descripcion %>
+               <%= form.text_field :descripcion, id: :estacionamiento_descripcion,class: :'materialize-textarea' %>
+           </div>
+             <div class="input-field col s12 m12 l6 xl6">
+              <i class="material-icons prefix">merge_type</i>
 
- <div class="row">
-   <div class="col s12 m12 l12 xl12 alert alert-danger hide" id="estacionamiento-error_explanation">
-      
-    </div>
-    <div class="input-field col s12 m12 l6 xl6">
-       <i class="material-icons prefix">insert_comment</i>
-        <%= form.label :descripcion %>
-        <%= form.text_field :descripcion, id: :estacionamiento_descripcion,class: :'materialize-textarea' %>
-    </div>
-      <div class="input-field col s12 m12 l6 xl6">
-       <i class="material-icons prefix">merge_type</i>
-      
-        <%= form.select :tipo,[["Privado","1"], [ "Público","2"]], id: :estacionamiento_tipo %>
-          <%= form.label :tipo %>
-    </div>
+               <%= form.select :tipo,[["Privado","1"], [ "Público","2"]], id: :estacionamiento_tipo %>
+                 <%= form.label :tipo %>
+           </div>
 
-      <div class="input-field col s12 m12 l6 xl6">
-       <i class="material-icons prefix">merge_type</i>
-      <%= form.label :direccion %>
-    <%= form.text_field :direccion, id: :estacionamiento_direccion %>
-    </div>
+             <div class="input-field col s12 m12 l6 xl6">
+              <i class="material-icons prefix">merge_type</i>
+             <%= form.label :direccion %>
+           <%= form.text_field :direccion, id: :estacionamiento_direccion %>
+           </div>
+           <div class="input-field col s12 m12 l6 xl6">
 
-     <div class="input-field col s12 m12 l6 xl6">
-       <i class="material-icons prefix">merge_type</i>
-         <%= form.label :latitud %>
-    <%= form.text_field :latitud, id: :estacionamiento_latitud %>
-    </div>
+        <div class="switch">
+     <label>
+       Inactivo
+      <%= form.check_box :estado, id: :estacionamiento_estado,checked: true%>
+       <span class="lever"></span>
+       Activo
+     </label>
+   </div>
 
 
+     </div>
+         </div>
+         <div class="step-actions">
+            <button class="waves-effect waves-dark btn next-step">SIGUIENTE</button>
+         </div>
+      </div>
+   </li>
+   <li class="step">
+      <div class="step-title waves-effect">Geolocalización</div>
+      <div class="step-content">
+         <div class="row">
+           <div class="input-field col s12 m12 l6 xl6">
+             <i class="material-icons prefix">merge_type</i>
+               <%= form.label :latitud %>
+          <%= form.text_field :latitud, id: :estacionamiento_latitud %>
+          </div>
 
-    <div class="input-field col s12 m12 l6 xl6">
-       <i class="material-icons prefix">merge_type</i>
-            <%= form.label :longitud %>
-    <%= form.text_field :longitud, id: :estacionamiento_longitud %>
-    </div>
 
-       <div class="input-field col s12 m12 l6 xl6">
-      
-    <%= form.label :altitud %>
-    <%= form.text_field :altitud, id: :estacionamiento_altitud %>
-    </div>
 
           <div class="input-field col s12 m12 l6 xl6">
-       <i class="material-icons prefix">merge_type</i>
-       <div class="switch">
-    <label>
-      Inactivo
-     <%= form.check_box :estado, id: :estacionamiento_estado,checked: true%>
-      <span class="lever"></span>
-      Activo
-    </label>
-  </div>
+             <i class="material-icons prefix">merge_type</i>
+                  <%= form.label :longitud %>
+          <%= form.text_field :longitud, id: :estacionamiento_longitud %>
+          </div>
 
-    
-    </div>
+             <div class="input-field col s12 m12 l6 xl6">
 
-       <div class="input-field col s12 m12 l6 xl6">
-       <i class="material-icons prefix">merge_type</i>
-      <%= form.label :precio %>
-    <%= form.text_field :precio, id: :estacionamiento_precio,onkeyup: "number_only(event)" %>
-    </div>
+          <%= form.label :altitud %>
+          <%= form.text_field :altitud, id: :estacionamiento_altitud %>
+          </div>
+         </div>
+         <div class="step-actions">
+            <button class="waves-effect waves-dark btn next-step">SIGUIENTE</button>
+            <button class="waves-effect waves-dark btn-flat previous-step">ANTERIOR</button>
+         </div>
+      </div>
+   </li>
+   <li class="step">
+      <div class="step-title waves-effect">Otros</div>
+      <div class="step-content">
+         <div class="row">
 
-         <div class="input-field col s12 m12 l6 xl6">
-       <i class="material-icons prefix">merge_type</i>
-      <%= form.label :moneda %>
-    <%= form.text_field :moneda, id: :estacionamiento_moneda %>
-    </div>
- </div>
-  <div class="hide">
-    <%= form.submit'send',id: :'submit-parking-form' %>
-  </div>
+
+        <div class="input-field col s12 m12 l6 xl6">
+        <i class="material-icons prefix">merge_type</i>
+       <%= form.label :precio %>
+     <%= form.text_field :precio, id: :estacionamiento_precio,onkeyup: "number_only(event)" %>
+     </div>
+
+          <div class="input-field col s12 m12 l6 xl6">
+        <i class="material-icons prefix">merge_type</i>
+       <%= form.label :moneda %>
+     <%= form.text_field :moneda, id: :estacionamiento_moneda %>
+     </div>
+         </div>
+         <div class="step-actions">
+             <%= form.submit 'GUARDAR',class: "hide",id: "new-parking-form-submit"%>
+             <button type="button" onclick="form_submit('new-parking-form-submit')" class="waves-effect waves-dark btn white-text">GUARDAR</button>
+         </div>
+      </div>
+   </li>
+</ul>
+
+
 <% end %>
 <script>
    $('select').formSelect();
+   	
 </script>

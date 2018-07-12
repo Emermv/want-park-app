@@ -18,7 +18,7 @@
   button: "ok",
 });
        }
-    
+
 
  });
 
@@ -33,9 +33,3 @@
 });
 
  });
-
-  function new_parking(){
-  	var elems = document.querySelectorAll('#new-parking-modal');
-    var instance = M.Modal.init(elems, {});
-   instance[0].open();
-  }
