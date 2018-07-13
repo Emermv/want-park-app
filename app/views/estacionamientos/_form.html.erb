@@ -11,7 +11,7 @@
            <div class="input-field col s12 m12 l6 xl6">
               <i class="material-icons prefix">insert_comment</i>
                <%= form.label :descripcion %>
-               <%= form.text_field :descripcion, id: :estacionamiento_descripcion,class: :'materialize-textarea' %>
+               <%= form.text_field :descripcion, id: :estacionamiento_descripcion %>
            </div>
              <div class="input-field col s12 m12 l6 xl6">
               <i class="material-icons prefix">merge_type</i>
@@ -91,6 +91,15 @@
        <%= form.label :moneda %>
      <%= form.text_field :moneda, id: :estacionamiento_moneda %>
      </div>
+     <div class="file-field input-field col s12 m12 l12 xl12">
+<div class="btn">
+  <span>File</span>
+  <%=form.file_field :image, id: :estacionamiento_image%>
+</div>
+<div class="file-path-wrapper">
+  <input class="file-path validate" type="text" placeholder="Seleccione imágenes">
+</div>
+</div>
          </div>
          <div class="step-actions">
              <%= form.submit 'GUARDAR',class: "hide",id: "new-parking-form-submit"%>
@@ -104,5 +113,5 @@
 <% end %>
 <script>
    $('select').formSelect();
-   	
+
 </script>

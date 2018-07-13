@@ -1,55 +1,263 @@
 <parking>
+  <style>
+    .collection-item .delete-action{
+      position: absolute;
+      top: 16px;
+      right: 50px;
+    }
+  </style>
+  <nav>
+      <div class="nav-wrapper">
+
+          <div class="input-field">
+            <input id="search-parking" type="search" required ref="search" onkeyup="{find}">
+            <label class="label-icon" for="search-parking"><i class="material-icons">search</i></label>
+            <i class="material-icons">close</i>
+          </div>
+
+      </div>
+    </nav>
   <ul class="collection">
 
-     <li class="collection-item avatar" each="{p in parkings}">
-       <img src="<%=image_path 'logo.png'%>" alt="" class="circle">
+     <li  each="{p,index in parkings}" class="{'collection-item avatar':true,'red lighten-4':!p.estado}" >
+       <img src="{p.image.url?p.image.url:'<%=image_path 'logo.png'%>'}" alt="" class="circle">
        <span class="title">{p.descripcion}</span>
        <p>{p.direccion}<br>
           {p.moneda} {p.precio}
        </p>
+       <a href="#" class="delete-action" onclick="{remove}"><i class="material-icons red-text">delete</i></a>
        <a href="#" class="secondary-content" onclick="{edit}"><i class="material-icons">edit</i></a>
      </li>
 
    </ul>
+   <div ref="modal" class="modal modal-fixed-footer">
+    <div class="modal-content">
+      <div class=" alert alert-danger hide" ref="error_explanation">
+
+      </div>
+      <ul class="stepper linear">
+         <li class="step active">
+            <div class="step-title waves-effect">Detalles</div>
+            <div class="step-content">
+               <div class="row">
+                 <div class="input-field col s12 m12 l6 xl6">
+                    <i class="material-icons prefix">insert_comment</i>
+                    <label for="descripcion">Descripción</label>
+                     <input type="text" id="descripcion" ref="descripcion" >
+                 </div>
+                   <div class="input-field col s12 m12 l6 xl6">
+                    <i class="material-icons prefix">merge_type</i>
+                    <label for="tipo"></label>
+                     <select ref="tipo" id="tipo">
+                     <option value="1" >Privado </option>
+                     <option value="2" >Público </option>
+                     </select>
+
+                 </div>
+
+                   <div class="input-field col s12 m12 l6 xl6">
+                    <i class="material-icons prefix">merge_type</i>
+                    <label for="direccion"></label>
+                     <input type="text" id="direccion" ref="direccion" >
+                 </div>
+                 <div class="input-field col s12 m12 l6 xl6">
+
+              <div class="switch">
+           <label>
+             Inactivo
+            <input type="checkbox" checked="{parking.estado}" ref="estado" />
+             <span class="lever"></span>
+             Activo
+           </label>
+         </div>
+
+
+           </div>
+               </div>
+               <div class="step-actions">
+                  <button class="waves-effect waves-dark btn next-step">SIGUIENTE</button>
+               </div>
+            </div>
+         </li>
+         <li class="step">
+            <div class="step-title waves-effect">Geolocalización</div>
+            <div class="step-content">
+               <div class="row">
+                 <div class="input-field col s12 m12 l6 xl6">
+                   <i class="material-icons prefix">merge_type</i>
+                   <label for="latitud">Latitud</label>
+                   <input type="text" id="latitud" ref="latitud" />
+
+                </div>
+
+
+
+                <div class="input-field col s12 m12 l6 xl6">
+                   <i class="material-icons prefix">merge_type</i>
+
+                    <label for="longitud">Longitud</label>
+                    <input type="text" id="longitud" ref="longitud" />
+
+                </div>
+
+                   <div class="input-field col s12 m12 l6 xl6">
+
+                     <label for="altitud">Altitud</label>
+                     <input type="text" id="altitud" ref="altitud" />
+
+                </div>
+               </div>
+               <div class="step-actions">
+                  <button class="waves-effect waves-dark btn next-step">SIGUIENTE</button>
+                  <button class="waves-effect waves-dark btn-flat previous-step">ANTERIOR</button>
+               </div>
+            </div>
+         </li>
+         <li class="step">
+            <div class="step-title waves-effect">Otros</div>
+            <div class="step-content">
+               <div class="row">
+
+
+              <div class="input-field col s12 m12 l6 xl6">
+              <i class="material-icons prefix">merge_type</i>
+              <label for="precio">Precio</label>
+              <input type="text" id="precio" ref="precio" />
+           </div>
+
+                <div class="input-field col s12 m12 l6 xl6">
+              <i class="material-icons prefix">merge_type</i>
+              <label for="moneda">Moneda</label>
+              <input type="text" id="moneda" ref="moneda" />
+
+           </div>
+           <div class="file-field input-field col s12 m12 l12 xl12">
+      <div class="btn">
+        <span>File</span>
+        <input type="file" multiple ref="images">
+      </div>
+      <div class="file-path-wrapper">
+        <input class="file-path validate" type="text" placeholder="Upload one or more files">
+      </div>
+    </div>
+               </div>
+               <div class="step-actions">
+
+                   <button type="button" onclick="{save}" class="waves-effect waves-dark btn white-text">GUARDAR</button>
+               </div>
+            </div>
+         </li>
+      </ul>
+    </div>
+    <div class="modal-footer">
+      <a href="#" class="modal-close waves-effect waves-green btn-flat" onclick="{close_modal}">Cerrar</a>
+    </div>
+  </div>
+
    this.parkings= opts.parkings || new Array();
-   this.authenticity_token='p8d7U0LWmFKZas1+u4EEkSX954cx48xUme9WL81y1kROdM14LCB21F4FFCFRwFDm+D6yaBfnPyoh7g4PTN8GmA==';
+   this.parking={};
+   this.editing_index=-1;
   this.on("mount", function () {
      console.log("mounted",this.opts);
+     this.modal=M.Modal.init(this.refs.modal, {});
   });
   push(parking){
     this.parkings.push(parking);
     this.update();
   }
+  find(e){
+    e.preventDefault();
+    if(this.refs.search.value.length==0){
+      this.parkings=opts.parkings;
+      return;
+    }
+  this.parkings=  this.parkings.filter((row,index)=>{
+    return row.descripcion.includes(this.refs.search.value) || row.direccion.includes(this.refs.search.value) || (""+row.precio).includes(this.refs.search.value) ;
+
+  });
+  }
+  close_modal(e){
+    e.preventDefault();
+    this.modal.close();
+  }
   edit(e){
     e.preventDefault();
-    let row=e.item.p;/*
-    for(let key in row){
-      $("#estacionamiento_"+key).val(row[key]);
-    }
-    new_parking();
-    M.updateTextFields();*/
+    this.parking=e.item.p;
+    this.editing_index=e.item.index;
     console.log(e);
-    let args={
-      utf8:"✓",
-    authenticity_token:this.authenticity_token,
-    };
-    for(let key in row){
-      args['estacionamiento['+key+']']=row[key];
-    }
+    this.modal.open();
+    this.refs.descripcion.value=this.parking.descripcion;
+    this.refs.direccion.value=this.parking.direccion;
+    this.refs.latitud.value=this.parking.latitud;
+    this.refs.altitud.value=this.parking.altitud;
+    this.refs.longitud.value=this.parking.longitud;
+    this.refs.precio.value=this.parking.precio;
+    this.refs.moneda.value=this.parking.moneda;
+    this.refs.tipo.value=this.parking.tipo;
+    M.updateTextFields();
+   $('select').formSelect();
+
+  }
+  save(e){
+    let args=new FormData();
+
+    args.append("utf8","✓");
+      args.append('estacionamiento[descripcion]',this.refs.descripcion.value);
+      args.append('estacionamiento[direccion]',this.refs.direccion.value);
+      args.append('estacionamiento[altitud]',this.refs.altitud.value);
+      args.append('estacionamiento[latitud]',this.refs.latitud.value);
+      args.append('estacionamiento[longitud]',this.refs.longitud.value);
+      args.append('estacionamiento[precio]',this.refs.precio.value);
+      args.append('estacionamiento[moneda]',this.refs.moneda.value);
+      args.append('estacionamiento[tipo]',this.refs.tipo.value);
+      args.append('estacionamiento[estado]',this.refs.estado.checked);
+      console.log({el:this.refs.images.files});
+      let i=0;
+for(let img of this.refs.images.files){
+  //args.append('estacionamiento[image'+(i++)+']',img);
+  args.append('estacionamiento[image]',img);
+
+}
+args.append('estacionamiento[image_size]',i);
     console.log(args);
+
     $.ajax({
-      url:" /estacionamientos/"+row.id+".json",
+      url:" /estacionamientos/"+this.parking.id+".json",
         method:"PUT",
-        dataType:'application/x-www-form-urlencoded',
+        cache: false,
+        processData: false,
+        contentType: false,
+        dataType:'json',
         type:'json',
       data:args,
     success:(r)=>{
       console.log(r);
+      this.parkings[this.editing_index]=r;
+      this.update();
+      this.modal.close();
+      swal("Correcto!", this.parking.descripcion+" se ha actualizado correctamente!", "success");
     },
     error:(r)=>{
+        this.modal.close();
       console.log(r);
+        swal("Error!", this.parking.descripcion+" no pudo ser actualizado, intentelo nuevamente!", "error");
     }
     })
+
+  }
+  remove(e){
+  e.preventDefault();
+  $.ajax({
+    url:"/estacionamientos/"+e.item.p.id+".json",
+    method:"DELETE",
+    dataType:'json',
+    type:'json',
+    success:(r)=>{
+      console.log(r);
+      this.parkings.splice(e.item.index,1);
+      this.update();
+    }
+  })
   }
 
 </parking>

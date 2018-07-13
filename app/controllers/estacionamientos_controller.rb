@@ -1,4 +1,5 @@
 class EstacionamientosController < ApplicationController
+  skip_before_action :verify_authenticity_token
   before_action :set_estacionamiento, only: [:show, :edit, :update, :destroy]
 
   # GET /estacionamientos
@@ -26,7 +27,7 @@ class EstacionamientosController < ApplicationController
   def create
     params[:estacionamiento][:id_proveedor]=session['user']['id']
     @estacionamiento = Estacionamiento.new(estacionamiento_params)
-  
+
     respond_to do |format|
       if @estacionamiento.save
         format.html { redirect_to @estacionamiento, notice: 'Estacionamiento was successfully created.' }
@@ -70,6 +71,17 @@ class EstacionamientosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def estacionamiento_params
-      params.require(:estacionamiento).permit(:descripcion, :tipo, :id_proveedor, :direccion, :latitud, :longitud, :altitud, :estado, :precio, :moneda)
+      params.require(:estacionamiento).permit(
+        :descripcion,
+        :tipo,
+        :id_proveedor,
+        :direccion,
+        :latitud,
+        :longitud,
+         :altitud,
+         :estado,
+         :precio,
+         :moneda,
+         :image)
     end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180701003806) do
+ActiveRecord::Schema.define(version: 20180713074533) do
 
   create_table "estacionamientos", force: :cascade do |t|
     t.text "descripcion"
@@ -23,6 +23,14 @@ ActiveRecord::Schema.define(version: 20180701003806) do
     t.boolean "estado"
     t.decimal "precio"
     t.string "moneda"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.text "image"
+  end
+
+  create_table "tests", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
