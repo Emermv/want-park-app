@@ -16,7 +16,7 @@
     <%=render '/tags/index'%>
     <%= javascript_include_tag 'app', 'data-turbolinks-track': 'reload' %>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-      <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.46.0/mapbox-gl.css' rel='stylesheet' />
+
   </head>
 
   <body>
@@ -99,12 +99,13 @@
     <%= yield %>
 </main>
   </body>
-  <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.46.0/mapbox-gl.js'></script>
 
-
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC5ViXXiO1AxSocJbj3uR4QaPcJbBlQN34&callback=initMap"
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC5ViXXiO1AxSocJbj3uR4QaPcJbBlQN34&libraries=places"
     async defer></script>
   <script>
+  window.globals={
+    logo:'<%=image_path 'place'%>'
+  };
         $('.dropdown-trigger').dropdown({hover:true,constrainWidth:false,coverTrigger:false});
          $('.sidenav').sidenav();
   </script>
