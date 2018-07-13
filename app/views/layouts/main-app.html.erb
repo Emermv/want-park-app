@@ -16,6 +16,7 @@
     <%=render '/tags/index'%>
     <%= javascript_include_tag 'app', 'data-turbolinks-track': 'reload' %>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.46.0/mapbox-gl.css' rel='stylesheet' />
   </head>
 
   <body>
@@ -36,7 +37,11 @@
 
 
   <ul class="right" style="margin-right: 10px">
-     <li>     <input search-input type="text" placeholder="buscar..." class="browser-default" /></li>
+     <li>
+<form onsubmit="find_parkings(event)">
+  <input search-input type="text" placeholder="buscar..." class="browser-default" id="global-search" />
+</form>
+     </li>
       <li><a class="dropdown-trigger pointer"  data-target="dropdown_more_options">
         <i class="material-icons right">more_vert</i></a></li>
     </ul>
@@ -58,7 +63,7 @@
       </a>
       </li>
 
-    <%if session[:user]['tipo_usuario']!=1%>
+    <%if session[:user]['tipo_usuario']==1%>
       <li>
       <a href="parking" class="waves-effect">
         <i class="material-icons">directions_car</i>Estacionar
@@ -94,7 +99,11 @@
     <%= yield %>
 </main>
   </body>
+  <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.46.0/mapbox-gl.js'></script>
 
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC5ViXXiO1AxSocJbj3uR4QaPcJbBlQN34&callback=initMap"
+    async defer></script>
   <script>
         $('.dropdown-trigger').dropdown({hover:true,constrainWidth:false,coverTrigger:false});
          $('.sidenav').sidenav();

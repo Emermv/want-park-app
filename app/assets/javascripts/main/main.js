@@ -1,33 +1,45 @@
  document.addEventListener('DOMContentLoaded', function() {
-  
+
     getLocation();
 
      //watch(document.querySelectorAll("[scrollable]"));
-  });
+  });/*
 function initMap() {
         window.map = new google.maps.Map(document.getElementById('map'), {
           center: {lat: -34.397, lng: 150.644},
           zoom: 8
         });
-  }
-
+  }*/
+  var map;
+        function initMap() {
+          map = new google.maps.Map(document.getElementById('map'), {
+            center: {lat: -34.397, lng: 150.644},
+            zoom: 8
+          });
+        }
   function getLocation(){
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition((position)=>{
           console.log(position);
+        //  myMap(position.coords);
         });
     } else {
        console.warn("Geolocation is not supported by this browser.");
     }
   }
 
-  function myMap() {
-var mapOptions = {
-    center: new google.maps.LatLng(51.5, -0.12),
-    zoom: 10,
-    mapTypeId: google.maps.MapTypeId.HYBRID
-}
-var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+  function myMap(coords) {
+
+   mapboxgl.accessToken = 'pk.eyJ1IjoiZW1lci1pc2F1IiwiYSI6ImNqamprMndjeTFlOHUzcXJtcG1sMXpzYmsifQ.X7lp-9XoPFI-uXaZurGYmw';
+var map = new mapboxgl.Map({
+    container: 'map',
+     zoom: 15,
+    center: [coords.longitude, coords.latitude],
+    style: 'mapbox://styles/mapbox/streets-v9'
+});
+var marker = new mapboxgl.Marker()
+  .setLngLat([coords.longitude,coords.latitude])
+  .addTo(map);
 }
 
 function watch(els){
@@ -54,3 +66,7 @@ window.addEventListener('resize',()=>{
 });
 }
 
+function find_parkings(e){
+  e.preventDefault();
+  console.log($("#global-search").val())
+}
